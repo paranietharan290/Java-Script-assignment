@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');/* font-1 */
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,300&display=swap');/* font-2 */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --font-1: 'Noto Serif', serif;
+    --font-2: 'Asap', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    background: #d9d9d9;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    color: #f2f2f2;
+}
+
+/***********/
+main{
+    margin-left: 25vw;
+    width: 50vw;
+}
+
+main h1, main h2{
+    font-family: var(--font-1);
+}
+
+p, li{
+    font-family: var(--font-2);
+}
+
+section h1, section h2, section p, section ul{
+    padding: 2vh 0;
+}
