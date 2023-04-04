@@ -1,24 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="css/registration.css">
-</head>
-<body>
-    <header>
-		<nav>
-			<ul>
-				<li><a href="index.html" class="active">Home</a></li>
-				<li><a href="registration.html">Registration Form</a></li>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="about.html">About</a></li>
-			</ul>
-		</nav>
 
-		<h1>International School</h1>
-	</header>
+	<link rel="stylesheet" href="css/registration.css">
+    <title>Validation</title>
+</head>
+
+<body>
+    <form action="" class="registration-form" onsubmit="return validateForm()">
+        <div class="form-content">
+            <h1>Registration Form</h1>
+
+            <label for="user-id">User ID : </label>
+            <input type="text" id="user-id"> <br><br>
+
+            <label for="password">Password : </label>
+            <input type="password" id="password"> <br><br>
+
+            <label for="name">Name : </label>
+            <input type="text" id="name"> <br><br>
+
+            <label for="address">Address : </label>
+            <input type="text" id="address"> <br><br>
+
+            <label for="country">country : </label>
+            <select name="country" id="country">
+                <option value="">(Please Select a country)</option>
+                <option value="1">United States</option>
+                <option value="2">Canada</option>
+                <option value="3">Sri Lanka</option>
+            </select> <br><br>
+
+            <label for="zip-code">Zip Code : </label>
+            <input type="text" id="zipCode"> <br><br>
+
+            <label for="email">Email : </label>
+            <input type="email" id="email"> <br><br>
+
+            <label for="sex">Sex : </label>
+            <input type="radio" name="gender" id="male" value="male">
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="female">
+            <label for="female">Female</label> <br><br>
+
+            <label for="about">About : </label> <br>
+            <textarea name="about" id="about" cols="30" rows="10"></textarea><br><br>
+
+            <input type="submit" value="Submit" style="margin-bottom: 2vh;">
+        </div>
+    </form>
+
+    <script>
+        // Select form and form fields
+        const form = document.querySelector('.registration-form');
+        const userIdInput = document.getElementById('user-id');
+        const passwordInput = document.getElementById('password');
+        const nameInput = document.getElementById('name');
+        const addressInput = document.getElementById('address');
+        const countryInput = document.getElementById('country');
+        const zipCodeInput = document.getElementById('zipCode');
+        const emailInput = document.getElementById('email');
+        const maleInput = document.getElementById('male');
+        const femaleInput = document.getElementById('female');
+        const aboutInput = document.getElementById('about');
+
+        // Define validation function
+        function validateForm() {
+            let errors = 0;
+
+            // Prevent form from submitting
+            event.preventDefault();
+
+            // Validate user ID
+            if (userIdInput.value === '' ||(userIdInput.value.length < 5 || userIdInput.value.length > 12)) {
+                alert('Required and must be of length 5 to 12');
+                errors++;
+            }
+
+            // Validate password
+            if (passwordInput.value === '' || (userIdInput.value.length < 7 || userIdInput.value.length > 12)) {
+                alert('Required and must be of length 7 to 12');
+                errors++;
+            }
+
+            // Validate name
+            if (nameInput.value === '') {
+                alert('Required and alphapets only');
+                errors++;
+            }
+
+            // Validate address
+            if (addressInput.value === '') {
+                alert('Optional');
+                errors++;
+            }
+
+            // Validate country
+            if (countryInput.value === '') {
+                alert('Required. Must select a country');
+                errors++;
+            }
+
+            // Validate zip code
+            if (zipCodeInput.value === '') {
+                alert('Optional');
+                errors++;
+            }
+
+            // Validate email
+            if (emailInput.value === '') {
+                alert('Required. Must be a valid email address');
+                errors++;
+            }
+
+            // Validate sex
+            if (!maleInput.checked && !femaleInput.checked) {
+                alert('Required');
+            }
+
+            // Validate about
+            if (aboutInput.value === '') {
+                alert('Optional');
+                errors++;
+            }
+
+            if (errors != 0) {
+                return false;
+            }
+
+
+            // If all fields are valid, submit the form
+            //alert('Form submitted successfully!');
+            return true;
+        }
+
+        // Add event listener to form submit
+        form.addEventListener('submit', validateForm);
+
+    </script>
 </body>
+
 </html>
